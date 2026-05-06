@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaCampus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="particles"></div>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo" onclick="goTo('landing')">NOVA<span>●</span>CAMPUS</div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="goTo('landing')">Home</button>
+    <button class="nav-link" onclick="goTo('marketplace')">Courses</button>
+    <button class="nav-link" onclick="goTo('classroom')">Classroom</button>
+    <button class="nav-link" onclick="goTo('community')">Community</button>
+  </div>
+  <div class="nav-right">
+    <button class="nav-link" onclick="goTo('signin')">Sign In</button>
+    <button class="nav-btn" onclick="goTo('signup')">Join Free →</button>
+  </div>
+</nav>
+
+<!-- LANDING PAGE -->
+<div id="page-landing" class="page">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">🚀 THE METAVERSE LEARNING REVOLUTION</div>
+      <div class="hero-orb"><div class="orb-inner">🎓</div></div>
+      <h1>
+        <span class="line1">Step Into the</span>
+        <span class="line2">Future of Learning</span>
+      </h1>
+      <p>NovaCampus is the world's first metaverse-native education platform. Immersive virtual classrooms, AI-powered tutoring, and gamified learning that makes you <em>love</em> studying.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="goTo('signup')">Enter the Campus →</button>
+        <button class="btn-secondary" onclick="goTo('classroom')">Watch a Live Class</button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" style="animation-delay:0.1s"><div class="stat-num">2.4M+</div><div class="stat-label">Active Students</div></div>
+        <div class="stat-card" style="animation-delay:0.2s"><div class="stat-num">18K</div><div class="stat-label">Expert Instructors</div></div>
+        <div class="stat-card" style="animation-delay:0.3s"><div class="stat-num">340+</div><div class="stat-label">Universities</div></div>
+        <div class="stat-card" style="animation-delay:0.4s"><div class="stat-num">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Why NovaCampus?</div>
+    <p class="section-sub">Not just another e-learning platform. A living, breathing digital campus.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Metaverse Classrooms</h3>
+        <p>Attend classes in immersive 3D environments. Your avatar, your presence, your focus — completely transformed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Tutor on Demand</h3>
+        <p>Your personal AI teaching assistant available 24/7. Ask anything, get step-by-step guidance, never get stuck again.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Gamified XP System</h3>
+        <p>Earn XP, unlock achievements, rise through leaderboards. Learning has never been this addictive.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Live Collaborative Sessions</h3>
+        <p>Real-time whiteboards, shared code editors, and synchronized video — collaboration reimagined.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Deep Analytics</h3>
+        <p>For teachers: engagement heatmaps, comprehension scores, and predictive dropout alerts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Blockchain Credentials</h3>
+        <p>Every certificate verified on-chain. Employers trust NovaCampus credentials worldwide.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGN IN PAGE -->
+<div id="page-signin" class="page hidden">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-student" onclick="setAuthRole('student')">🎓 Student</button>
+        <button class="auth-tab" id="tab-teacher" onclick="setAuthRole('teacher')">🧑‍🏫 Teacher</button>
+      </div>
+      <div class="auth-title">Welcome Back</div>
+      <div class="auth-sub">Sign in to resume your learning journey</div>
+      <div class="field-group">
+        <label class="field-label">Email</label>
+        <input type="email" class="field-input" placeholder="nova@campus.io">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Password</label>
+        <input type="password" class="field-input" placeholder="••••••••">
+      </div>
+      <button class="auth-submit" id="signin-btn" onclick="handleSignIn()">ACCESS CAMPUS →</button>
+      <div class="auth-divider">or</div>
+      <div style="display:flex;gap:0.75rem">
+        <button style="flex:1;background:var(--nc-surface2);border:1px solid var(--nc-border);color:var(--nc-text);font-family:'Exo 2',sans-serif;padding:0.65rem;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:all 0.2s" onmouseover="this.style.borderColor='rgba(0,245,255,0.4)'" onmouseout="this.style.borderColor='var(--nc-border)'">🔑 Google</button>
+        <button style="flex:1;background:var(--nc-surface2);border:1px solid var(--nc-border);color:var(--nc-text);font-family:'Exo 2',sans-serif;padding:0.65rem;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:all 0.2s" onmouseover="this.style.borderColor='rgba(0,245,255,0.4)'" onmouseout="this.style.borderColor='var(--nc-border)'">⛓️ Wallet</button>
+      </div>
+      <div class="auth-switch">Don't have an account? <button onclick="goTo('signup')">Join NovaCampus</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGN UP PAGE -->
+<div id="page-signup" class="page hidden">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-title">Join NovaCampus</div>
+      <div class="auth-sub">Choose your role to begin your journey</div>
+      <div class="role-selector">
+        <div class="role-btn selected" id="role-student" onclick="selectRole('student')">
+          <span class="role-emoji">🎓</span>
+          <strong>Student</strong><br>
+          <span style="font-size:0.72rem;color:var(--nc-muted)">Learn & grow</span>
+        </div>
+        <div class="role-btn" id="role-teacher" onclick="selectRole('teacher')">
+          <span class="role-emoji">🧑‍🏫</span>
+          <strong>Teacher</strong><br>
+          <span style="font-size:0.72rem;color:var(--nc-muted)">Teach & inspire</span>
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Full Name</label>
+        <input type="text" class="field-input" placeholder="Nova Starlight">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Email</label>
+        <input type="email" class="field-input" placeholder="nova@campus.io">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Password</label>
+        <input type="password" class="field-input" placeholder="Create a strong password">
+      </div>
+      <div id="teacher-fields" class="hidden">
+        <div class="field-group">
+          <label class="field-label">Institution / Organization</label>
+          <input type="text" class="field-input" placeholder="NovaTech University">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Area of Expertise</label>
+          <input type="text" class="field-input" placeholder="Quantum Computing, AI...">
+        </div>
+      </div>
+      <button class="auth-submit" onclick="handleSignUp()">CREATE MY ACCOUNT →</button>
+      <div class="auth-switch">Already a member? <button onclick="goTo('signin')">Sign In</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- STUDENT DASHBOARD -->
+<div id="page-student" class="page hidden">
+  <div class="dash-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Main</div>
+        <div class="sidebar-item active"><span class="si-icon">🏠</span> Dashboard</div>
+        <div class="sidebar-item" onclick="goTo('marketplace')"><span class="si-icon">🛒</span> Marketplace</div>
+        <div class="sidebar-item" onclick="goTo('classroom')"><span class="si-icon">🎭</span> Classroom <span class="sidebar-badge">LIVE</span></div>
+        <div class="sidebar-item" onclick="goTo('community')"><span class="si-icon">👥</span> Community</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Learning</div>
+        <div class="sidebar-item"><span class="si-icon">📚</span> My Courses</div>
+        <div class="sidebar-item"><span class="si-icon">📋</span> Assignments <span class="sidebar-badge">3</span></div>
+        <div class="sidebar-item"><span class="si-icon">🏆</span> Achievements</div>
+        <div class="sidebar-item"><span class="si-icon">📊</span> Progress</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Account</div>
+        <div class="sidebar-item"><span class="si-icon">⚙️</span> Settings</div>
+        <div class="sidebar-item" onclick="goTo('landing')"><span class="si-icon">🚪</span> Sign Out</div>
+      </div>
+    </div>
+    <div class="dash-main">
+      <div class="dash-header">
+        <div>
+          <div class="dash-welcome">Welcome back, <span>Nova</span> 👋</div>
+          <div class="dash-date">Wednesday, May 7, 2025 · Day 47 streak 🔥</div>
+        </div>
+        <div style="display:flex;gap:0.75rem">
+          <button style="background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.2);color:var(--nc-cyan);font-family:'Exo 2',sans-serif;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;font-size:0.82rem">🔔 Notifications</button>
+          <button class="nav-btn" onclick="goTo('classroom')">Join Class →</button>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <div class="avatar-ring"><div class="avatar-inner">👩‍🚀</div></div>
+        <div class="profile-info">
+          <h3>Nova Starlight</h3>
+          <p>Level 24 · Quantum Learner · @novastar</p>
+          <div class="badges-row">
+            <span class="badge gold">⭐ Top 1%</span>
+            <span class="badge pink">🔥 47 Day Streak</span>
+            <span class="badge purple">🤖 AI Whiz</span>
+            <span class="badge green">💡 Problem Solver</span>
+            <span class="badge">⚡ Speed Coder</span>
+          </div>
+        </div>
+        <div class="xp-bar-wrap">
+          <div class="xp-label"><span>XP Progress</span><span style="color:var(--nc-cyan);font-family:'Space Mono',monospace">12,450 / 15,000</span></div>
+          <div class="xp-bar"><div class="xp-fill" style="width:83%"></div></div>
+          <div style="font-size:0.72rem;color:var(--nc-muted);margin-top:0.4rem">2,550 XP until Level 25 · Top Contributor rank</div>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="metric-card cyan"><div class="mc-label">Total XP</div><div class="mc-value cyan">12,450</div><div class="mc-trend">↑ +840 this week</div></div>
+        <div class="metric-card purple"><div class="mc-label">Courses Active</div><div class="mc-value purple">7</div><div class="mc-sub">3 due this week</div></div>
+        <div class="metric-card pink"><div class="mc-label">Global Rank</div><div class="mc-value pink">#142</div><div class="mc-trend">↑ +58 positions</div></div>
+        <div class="metric-card gold"><div class="mc-label">Streak</div><div class="mc-value gold">47🔥</div><div class="mc-sub">Personal best!</div></div>
+        <div class="metric-card green"><div class="mc-label">Completed</div><div class="mc-value green">24</div><div class="mc-sub">courses done</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:1.5rem;flex-wrap:wrap">
+        <div>
+          <div class="sec-hdr"><h2>📚 My Courses</h2><button>View All</button></div>
+          <div class="courses-grid" style="grid-template-columns:1fr">
+            <div class="course-card">
+              <div class="course-thumb grad1"><div class="ct-glow c"></div>🤖</div>
+              <div class="course-body">
+                <div class="course-cat">Artificial Intelligence</div>
+                <div class="course-title">Neural Networks & Deep Learning Mastery</div>
+                <div class="course-meta"><span>⏱ 48h total</span><span>👨‍🏫 Dr. Ava Chen</span></div>
+                <div class="course-progress">
+                  <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--nc-muted)"><span>Progress</span><span>72%</span></div>
+                  <div class="prog-bar"><div class="prog-fill c" style="width:72%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb grad3"><div class="ct-glow pk"></div>⚛️</div>
+              <div class="course-body">
+                <div class="course-cat">Quantum Computing</div>
+                <div class="course-title">Introduction to Quantum Algorithms</div>
+                <div class="course-meta"><span>⏱ 36h total</span><span>👨‍🏫 Prof. Max Heisenberg</span></div>
+                <div class="course-progress">
+                  <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--nc-muted)"><span>Progress</span><span>45%</span></div>
+                  <div class="prog-bar"><div class="prog-fill pk" style="width:45%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec-hdr" style="margin-top:1.5rem"><h2>💡 Recommended</h2><button>Browse</button></div>
+          <div class="courses-grid" style="grid-template-columns:repeat(2,1fr)">
+            <div class="course-card">
+              <div class="course-thumb grad2"><div class="ct-glow g"></div>🌿</div>
+              <div class="course-body">
+                <div class="course-cat">Biotech</div>
+                <div class="course-title">CRISPR & Gene Editing</div>
+                <div class="course-meta"><span>⭐ 4.9</span><span>12.4k enrolled</span></div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb grad5"><div class="ct-glow go"></div>🛸</div>
+              <div class="course-body">
+                <div class="course-cat">Space Tech</div>
+                <div class="course-title">Mars Mission Engineering</div>
+                <div class="course-meta"><span>⭐ 4.8</span><span>8.7k enrolled</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-hdr"><h2>📅 Classes</h2><button>Full view</button></div>
+          <div class="calendar" style="margin-bottom:1.5rem">
+            <div class="cal-header">
+              <span>◀</span>
+              <span>May 2025</span>
+              <span>▶</span>
+            </div>
+            <div class="cal-grid">
+              <div class="cal-day-label">S</div><div class="cal-day-label">M</div><div class="cal-day-label">T</div><div class="cal-day-label">W</div><div class="cal-day-label">T</div><div class="cal-day-label">F</div><div class="cal-day-label">S</div>
+              <div class="cal-day"></div><div class="cal-day"></div><div class="cal-day"></div><div class="cal-day event">1</div><div class="cal-day event">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+              <div class="cal-day">5</div><div class="cal-day event">6</div><div class="cal-day today">7</div><div class="cal-day event">8</div><div class="cal-day">9</div><div class="cal-day event">10</div><div class="cal-day">11</div>
+              <div class="cal-day">12</div><div class="cal-day event">13</div><div class="cal-day">14</div><div class="cal-day event">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+              <div class="cal-day event">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day event">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+            </div>
+          </div>
+
+          <div class="sec-hdr"><h2>🏆 Leaderboard</h2><button>Full</button></div>
+          <div class="leaderboard">
+            <div class="lb-row"><span class="lb-rank r1">1</span><span class="lb-avatar">🧑‍💻</span><span class="lb-name">Alex Nova</span><span class="lb-xp">18,240 XP</span><span class="lb-medal">🥇</span></div>
+            <div class="lb-row"><span class="lb-rank r2">2</span><span class="lb-avatar">👩‍🔬</span><span class="lb-name">Zara Knight</span><span class="lb-xp">16,890 XP</span><span class="lb-medal">🥈</span></div>
+            <div class="lb-row"><span class="lb-rank r3">3</span><span class="lb-avatar">🧑‍🚀</span><span class="lb-name">Kai Cosmos</span><span class="lb-xp">15,320 XP</span><span class="lb-medal">🥉</span></div>
+            <div class="lb-row" style="background:rgba(0,245,255,0.05)"><span class="lb-rank" style="color:var(--nc-cyan)">142</span><span class="lb-avatar" style="background:linear-gradient(135deg,var(--nc-cyan),var(--nc-purple))">👩‍🚀</span><span class="lb-name" style="color:var(--nc-cyan)">Nova (You)</span><span class="lb-xp">12,450 XP</span></div>
+          </div>
+
+          <div class="sec-hdr" style="margin-top:1.25rem"><h2>🤖 AI Assistant</h2></div>
+          <div style="background:var(--nc-surface);border:1px solid var(--nc-border);border-radius:14px;padding:1rem">
+            <div style="font-size:0.82rem;color:var(--nc-muted);margin-bottom:0.75rem">Ask NovAI anything about your courses...</div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem">
+              <button style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:var(--nc-purple);font-size:0.72rem;padding:0.3rem 0.65rem;border-radius:6px;cursor:pointer">Explain backprop</button>
+              <button style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:var(--nc-purple);font-size:0.72rem;padding:0.3rem 0.65rem;border-radius:6px;cursor:pointer">Quiz me</button>
+              <button style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:var(--nc-purple);font-size:0.72rem;padding:0.3rem 0.65rem;border-radius:6px;cursor:pointer">Summarize week</button>
+            </div>
+            <div style="display:flex;gap:0.5rem">
+              <input type="text" placeholder="Ask NovAI..." style="flex:1;background:var(--nc-surface2);border:1px solid var(--nc-border);border-radius:8px;padding:0.6rem 0.75rem;color:var(--nc-text);font-family:'Exo 2',sans-serif;font-size:0.82rem;outline:none">
+              <button style="background:linear-gradient(135deg,var(--nc-purple),var(--nc-pink));border:none;color:#fff;font-size:0.85rem;width:36px;border-radius:8px;cursor:pointer">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEACHER DASHBOARD -->
+<div id="page-teacher" class="page hidden">
+  <div class="dash-layout">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Main</div>
+        <div class="sidebar-item active"><span class="si-icon">📊</span> Dashboard</div>
+        <div class="sidebar-item" onclick="goTo('classroom')"><span class="si-icon">🎭</span> Live Class</div>
+        <div class="sidebar-item"><span class="si-icon">📁</span> My Courses</div>
+        <div class="sidebar-item"><span class="si-icon">👥</span> Students</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Content</div>
+        <div class="sidebar-item"><span class="si-icon">⬆️</span> Upload Content</div>
+        <div class="sidebar-item"><span class="si-icon">📝</span> Assignments</div>
+        <div class="sidebar-item"><span class="si-icon">🎯</span> Quizzes</div>
+        <div class="sidebar-item"><span class="si-icon">🤖</span> AI Tools</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Account</div>
+        <div class="sidebar-item"><span class="si-icon">⚙️</span> Settings</div>
+        <div class="sidebar-item" onclick="goTo('landing')"><span class="si-icon">🚪</span> Sign Out</div>
+      </div>
+    </div>
+    <div class="dash-main">
+      <div class="dash-header">
+        <div>
+          <div class="dash-welcome">Teacher Hub, <span>Prof. Chen</span></div>
+          <div class="dash-date">Wednesday, May 7, 2025 · 3 classes scheduled today</div>
+        </div>
+        <button class="nav-btn" onclick="goTo('classroom')">▶ Start Class</button>
+      </div>
+
+      <div class="cards-grid">
+        <div class="metric-card cyan"><div class="mc-label">Total Students</div><div class="mc-value cyan">3,247</div><div class="mc-trend">↑ +127 this month</div></div>
+        <div class="metric-card purple"><div class="mc-label">Avg Engagement</div><div class="mc-value purple">87%</div><div class="mc-trend">↑ +5% vs last week</div></div>
+        <div class="metric-card gold"><div class="mc-label">Course Rating</div><div class="mc-value gold">4.9★</div><div class="mc-sub">from 2,841 reviews</div></div>
+        <div class="metric-card green"><div class="mc-label">Completions</div><div class="mc-value green">1,204</div><div class="mc-trend">↑ 89% completion rate</div></div>
+      </div>
+
+      <div class="upload-zone">
+        <div class="upload-icon">⬆️</div>
+        <h3>Upload Course Content</h3>
+        <p>Drag & drop videos, PDFs, slides, or code files · Supports MP4, PDF, PPTX, ZIP · Max 4GB</p>
+        <button class="btn-primary" style="margin-top:1.5rem;font-size:0.75rem">Browse Files</button>
+      </div>
+
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h3>Weekly Engagement</h3>
+          <div class="bar-chart">
+            <div class="bar" style="height:60%;background:linear-gradient(to top,rgba(0,245,255,0.6),rgba(0,245,255,0.2))" data-val="Mon"></div>
+            <div class="bar" style="height:80%;background:linear-gradient(to top,rgba(0,245,255,0.7),rgba(0,245,255,0.3))" data-val="Tue"></div>
+            <div class="bar" style="height:55%;background:linear-gradient(to top,rgba(0,245,255,0.5),rgba(0,245,255,0.2))" data-val="Wed"></div>
+            <div class="bar" style="height:90%;background:linear-gradient(to top,rgba(168,85,247,0.8),rgba(168,85,247,0.3))" data-val="Thu"></div>
+            <div class="bar" style="height:75%;background:linear-gradient(to top,rgba(0,245,255,0.7),rgba(0,245,255,0.3))" data-val="Fri"></div>
+            <div class="bar" style="height:40%;background:linear-gradient(to top,rgba(0,245,255,0.4),rgba(0,245,255,0.1))" data-val="Sat"></div>
+            <div class="bar" style="height:30%;background:linear-gradient(to top,rgba(0,245,255,0.3),rgba(0,245,255,0.1))" data-val="Sun"></div>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <h3>Student Distribution</h3>
+          <div class="donut-wrap">
+            <svg class="donut-svg" width="90" height="90" viewBox="0 0 90 90">
+              <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(0,245,255,0.15)" stroke-width="12"/>
+              <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(0,245,255,0.8)" stroke-width="12" stroke-dasharray="88 132" stroke-linecap="round" transform="rotate(-90 45 45)"/>
+              <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(168,85,247,0.8)" stroke-width="12" stroke-dasharray="55 165" stroke-linecap="round" transform="rotate(150 45 45)"/>
+              <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(255,0,128,0.7)" stroke-width="12" stroke-dasharray="27 193" stroke-linecap="round" transform="rotate(250 45 45)"/>
+              <text x="45" y="49" text-anchor="middle" fill="rgba(0,245,255,0.9)" font-size="10" font-family="'Orbitron',monospace">3.2K</text>
+            </svg>
+            <div class="donut-legend">
+              <div class="dl-item"><span class="dl-dot" style="background:rgba(0,245,255,0.8)"></span>Active (62%)</div>
+              <div class="dl-item"><span class="dl-dot" style="background:rgba(168,85,247,0.8)"></span>Inactive (27%)</div>
+              <div class="dl-item"><span class="dl-dot" style="background:rgba(255,0,128,0.7)"></span>At-risk (11%)</div>
+            </div>
+          </div>
+        </div>
+        <div class="analytics-card" style="grid-column:1/-1">
+          <h3>Engagement Heatmap — Past 4 Weeks</h3>
+          <div class="heatmap" id="heatmap"></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;font-size:0.72rem;color:var(--nc-muted)">
+            <span>Low</span>
+            <div style="width:12px;height:12px;background:rgba(0,245,255,0.1);border-radius:2px"></div>
+            <div style="width:12px;height:12px;background:rgba(0,245,255,0.3);border-radius:2px"></div>
+            <div style="width:12px;height:12px;background:rgba(0,245,255,0.6);border-radius:2px"></div>
+            <div style="width:12px;height:12px;background:rgba(0,245,255,0.9);border-radius:2px"></div>
+            <span>High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-hdr"><h2>📁 Course Management</h2><button onclick="goTo('marketplace')">View All</button></div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-thumb grad1"><div class="ct-glow c"></div>🤖</div>
+          <div class="course-body">
+            <div class="course-cat">AI · 3,247 enrolled</div>
+            <div class="course-title">Neural Networks & Deep Learning</div>
+            <div class="course-meta"><span>⭐ 4.9</span><span>48h content</span><span style="color:var(--nc-green)">● Active</span></div>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem">
+              <button style="flex:1;background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.2);color:var(--nc-cyan);font-size:0.72rem;padding:0.3rem;border-radius:6px;cursor:pointer">Edit</button>
+              <button style="flex:1;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:var(--nc-purple);font-size:0.72rem;padding:0.3rem;border-radius:6px;cursor:pointer">Analytics</button>
+            </div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-thumb grad4"><div class="ct-glow g"></div>🧬</div>
+          <div class="course-body">
+            <div class="course-cat">Biotech · 1,890 enrolled</div>
+            <div class="course-title">Computational Biology & Genomics</div>
+            <div class="course-meta"><span>⭐ 4.8</span><span>60h content</span><span style="color:var(--nc-green)">● Active</span></div>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem">
+              <button style="flex:1;background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.2);color:var(--nc-cyan);font-size:0.72rem;padding:0.3rem;border-radius:6px;cursor:pointer">Edit</button>
+              <button style="flex:1;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:var(--nc-purple);font-size:0.72rem;padding:0.3rem;border-radius:6px;cursor:pointer">Analytics</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIRTUAL CLASSROOM -->
+<div id="page-classroom" class="page hidden" style="padding-top:64px">
+  <div class="classroom">
+    <div class="classroom-main">
+      <div class="classroom-stage">
+        <div class="stage-bg"></div>
+        <div class="stage-grid"></div>
+        <div class="whiteboard">
+          <div class="wb-header">
+            <span class="wb-title">🧠 Neural Networks — Backpropagation Deep Dive</span>
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:0.72rem;color:var(--nc-muted)"><span class="live-dot"></span>LIVE · 47 watching</span>
+              <div class="wb-tools">
+                <button class="wb-tool active">✏️ Draw</button>
+                <button class="wb-tool">📝 Text</button>
+                <button class="wb-tool">⬜ Shape</button>
+                <button class="wb-tool">🔗 Code</button>
+                <button class="wb-tool">🗑 Clear</button>
+              </div>
+            </div>
+          </div>
+          <div class="wb-canvas">
+            <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+              <text x="20" y="30" fill="rgba(0,245,255,0.6)" font-family="'Space Mono',monospace" font-size="11">Input Layer</text>
+              <text x="250" y="30" fill="rgba(168,85,247,0.6)" font-family="'Space Mono',monospace" font-size="11">Hidden Layer</text>
+              <text x="490" y="30" fill="rgba(255,0,128,0.6)" font-family="'Space Mono',monospace" font-size="11">Output</text>
+              <circle cx="50" cy="80" r="18" fill="none" stroke="rgba(0,245,255,0.5)" stroke-width="1.5"/>
+              <circle cx="50" cy="120" r="18" fill="none" stroke="rgba(0,245,255,0.5)" stroke-width="1.5"/>
+              <circle cx="50" cy="160" r="18" fill="none" stroke="rgba(0,245,255,0.5)" stroke-width="1.5"/>
+              <circle cx="220" cy="70" r="18" fill="none" stroke="rgba(168,85,247,0.5)" stroke-width="1.5"/>
+              <circle cx="220" cy="110" r="18" fill="none" stroke="rgba(168,85,247,0.5)" stroke-width="1.5"/>
+              <circle cx="220" cy="150" r="18" fill="none" stroke="rgba(168,85,247,0.5)" stroke-width="1.5"/>
+              <circle cx="380" cy="80" r="18" fill="none" stroke="rgba(168,85,247,0.4)" stroke-width="1.5"/>
+              <circle cx="380" cy="130" r="18" fill="none" stroke="rgba(168,85,247,0.4)" stroke-width="1.5"/>
+              <circle cx="520" cy="105" r="20" fill="rgba(255,0,128,0.1)" stroke="rgba(255,0,128,0.6)" stroke-width="1.5"/>
+              <line x1="68" y1="80" x2="202" y2="70" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="80" x2="202" y2="110" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="80" x2="202" y2="150" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="120" x2="202" y2="70" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="120" x2="202" y2="110" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="120" x2="202" y2="150" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="160" x2="202" y2="70" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="160" x2="202" y2="110" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="68" y1="160" x2="202" y2="150" stroke="rgba(0,245,255,0.2)" stroke-width="1"/>
+              <line x1="238" y1="70" x2="362" y2="80" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="238" y1="110" x2="362" y2="80" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="238" y1="150" x2="362" y2="80" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="238" y1="70" x2="362" y2="130" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="238" y1="110" x2="362" y2="130" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="238" y1="150" x2="362" y2="130" stroke="rgba(168,85,247,0.25)" stroke-width="1"/>
+              <line x1="398" y1="80" x2="500" y2="105" stroke="rgba(255,0,128,0.4)" stroke-width="1.5"/>
+              <line x1="398" y1="130" x2="500" y2="105" stroke="rgba(255,0,128,0.4)" stroke-width="1.5"/>
+              <text x="520" y="109" text-anchor="middle" fill="rgba(255,0,128,0.8)" font-size="10" font-family="monospace">ŷ</text>
+              <text x="50" y="84" text-anchor="middle" fill="rgba(0,245,255,0.6)" font-size="9" font-family="monospace">x₁</text>
+              <text x="50" y="124" text-anchor="middle" fill="rgba(0,245,255,0.6)" font-size="9" font-family="monospace">x₂</text>
+              <text x="50" y="164" text-anchor="middle" fill="rgba(0,245,255,0.6)" font-size="9" font-family="monospace">x₃</text>
+            </svg>
+          </div>
+        </div>
+        <div class="student-avatars">
+          <div class="stu-av">
+            <div class="stu-av-ring active"><div class="stu-av-inner">👩‍🚀</div></div>
+            <div class="stu-av-name">Nova</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring active"><div class="stu-av-inner">🧑‍💻</div></div>
+            <div class="stu-av-name">Alex</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring raised"><div class="stu-av-inner">👩‍🔬</div><span class="stu-av-hand" style="position:absolute;top:-8px;right:-8px">✋</span></div>
+            <div class="stu-av-name">Zara</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring muted"><div class="stu-av-inner">🧑‍🚀</div></div>
+            <div class="stu-av-name">Kai</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring active"><div class="stu-av-inner">👨‍🎨</div></div>
+            <div class="stu-av-name">Remy</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring active"><div class="stu-av-inner">🧕</div></div>
+            <div class="stu-av-name">Laila</div>
+          </div>
+          <div class="stu-av">
+            <div class="stu-av-ring muted"><div class="stu-av-inner">🧑‍🎤</div></div>
+            <div class="stu-av-name">Juno</div>
+          </div>
+        </div>
+        <div class="floating-controls">
+          <button class="fc-btn on" title="Mic On">🎤</button>
+          <button class="fc-btn on" title="Camera On">📹</button>
+          <div class="fc-sep"></div>
+          <button class="fc-btn raise" title="Raise Hand">✋</button>
+          <button class="fc-btn on" title="Screen Share">🖥</button>
+          <button class="fc-btn on" title="Reactions">😊</button>
+          <div class="fc-sep"></div>
+          <button class="fc-btn leave" title="Leave Class" onclick="goTo('student')">✕</button>
+        </div>
+      </div>
+    </div>
+    <div class="classroom-sidebar">
+      <div class="cs-tab-bar">
+        <button class="cs-tab active" id="chat-tab" onclick="setCSTab('chat')">💬 Chat</button>
+        <button class="cs-tab" id="people-tab" onclick="setCSTab('people')">👥 47</button>
+        <button class="cs-tab" id="qa-tab" onclick="setCSTab('qa')">❓ Q&A</button>
+      </div>
+      <div class="cs-content" id="cs-chat">
+        <div class="chat-msg">
+          <div class="chat-msg-name">Dr. Ava Chen</div>
+          <div class="chat-msg-text">Welcome everyone! Today we're diving deep into backpropagation. Please follow along on the whiteboard 🧠</div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-msg-name">Alex Nova</div>
+          <div class="chat-msg-text">This is so clear! The visual really helps. Can we also cover gradient vanishing?</div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-msg-name">Zara Knight</div>
+          <div class="chat-msg-text">What's the learning rate you recommend starting with?</div>
+        </div>
+        <div class="chat-msg me">
+          <div class="chat-msg-name">You</div>
+          <div class="chat-msg-text">Super clear explanation! The node diagram helps so much 🔥</div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-msg-name">Dr. Ava Chen</div>
+          <div class="chat-msg-text">@Alex Great question! We'll cover vanishing gradients in the next 10 min 👍</div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-msg-name">Kai Cosmos</div>
+          <div class="chat-msg-text">The weight initialization matters a lot too right?</div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-msg-name">NovAI 🤖</div>
+          <div class="chat-msg-text" style="border-color:rgba(168,85,247,0.2);background:rgba(168,85,247,0.05)">Gradient vanishing occurs when gradients become extremely small, preventing weights in earlier layers from updating. Common solutions: ReLU activations, batch norm, residual connections.</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" placeholder="Send a message...">
+        <button class="chat-send">→</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARKETPLACE -->
+<div id="page-marketplace" class="page hidden">
+  <div class="marketplace">
+    <div class="dash-header">
+      <div>
+        <div class="dash-welcome">Course <span>Marketplace</span></div>
+        <div class="dash-date">Discover 50,000+ courses from the world's top institutions</div>
+      </div>
+    </div>
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="🔍 Search quantum computing, AI, space engineering...">
+      <button class="search-btn">SEARCH</button>
+    </div>
+    <div class="filter-chips">
+      <span class="chip active">All</span>
+      <span class="chip">🤖 AI & ML</span>
+      <span class="chip">⚛️ Quantum</span>
+      <span class="chip">🧬 Biotech</span>
+      <span class="chip">🛸 Space</span>
+      <span class="chip">💻 Web3</span>
+      <span class="chip">🔐 Cybersecurity</span>
+      <span class="chip">🌿 Climate</span>
+      <span class="chip">🎮 Game Dev</span>
+    </div>
+
+    <div class="sec-hdr"><h2>🔥 Trending Now</h2><button>See all</button></div>
+    <div class="trending-scroll">
+      <div class="trending-card">
+        <span class="trending-badge">HOT</span>
+        <div class="tc-icon">🤖</div>
+        <div class="tc-cat">Artificial Intelligence</div>
+        <div class="tc-title">GPT-5 Fine-Tuning Mastery</div>
+        <div class="tc-info">Dr. Ava Chen · 24h · 42K enrolled</div>
+        <div class="tc-stars">★★★★★ 4.9 (8.2K reviews)</div>
+      </div>
+      <div class="trending-card">
+        <span class="trending-badge">NEW</span>
+        <div class="tc-icon">⚛️</div>
+        <div class="tc-cat">Quantum Computing</div>
+        <div class="tc-title">Qiskit & Quantum Circuits</div>
+        <div class="tc-info">Prof. Heisenberg · 36h · 18K enrolled</div>
+        <div class="tc-stars">★★★★★ 4.8 (4.1K reviews)</div>
+      </div>
+      <div class="trending-card">
+        <span class="trending-badge" style="background:linear-gradient(135deg,var(--nc-gold),var(--nc-orange))">TOP</span>
+        <div class="tc-icon">🚀</div>
+        <div class="tc-cat">Space Engineering</div>
+        <div class="tc-title">Propulsion Systems Design</div>
+        <div class="tc-info">Dr. Elon-stein · 48h · 31K enrolled</div>
+        <div class="tc-stars">★★★★★ 5.0 (12K reviews)</div>
+      </div>
+      <div class="trending-card">
+        <div class="tc-icon">🧬</div>
+        <div class="tc-cat">Biotechnology</div>
+        <div class="tc-title">CRISPR Genome Editing</div>
+        <div class="tc-info">Dr. Kim · 40h · 22K enrolled</div>
+        <div class="tc-stars">★★★★☆ 4.7 (6.8K reviews)</div>
+      </div>
+      <div class="trending-card">
+        <span class="trending-badge" style="background:linear-gradient(135deg,rgba(0,255,136,0.8),rgba(0,100,60,0.9))">ECO</span>
+        <div class="tc-icon">🌿</div>
+        <div class="tc-cat">Climate Tech</div>
+        <div class="tc-title">Carbon Capture Engineering</div>
+        <div class="tc-info">Prof. Green · 32h · 16K enrolled</div>
+        <div class="tc-stars">★★★★★ 4.9 (3.2K reviews)</div>
+      </div>
+    </div>
+
+    <div class="sec-hdr" style="margin-top:2rem"><h2>🏛️ By Institution</h2></div>
+    <div class="uni-filters">
+      <div class="uni-card"><div class="uni-icon">🏛️</div><div class="uni-name">NovaTech Univ</div></div>
+      <div class="uni-card"><div class="uni-icon">🌌</div><div class="uni-name">Cosmos Institute</div></div>
+      <div class="uni-card"><div class="uni-icon">⚗️</div><div class="uni-name">Quantum Labs</div></div>
+      <div class="uni-card"><div class="uni-icon">🧬</div><div class="uni-name">BioHorizon</div></div>
+      <div class="uni-card"><div class="uni-icon">🛰️</div><div class="uni-name">AeroAcademy</div></div>
+      <div class="uni-card"><div class="uni-icon">💡</div><div class="uni-name">NovAI School</div></div>
+    </div>
+
+    <div class="sec-hdr"><h2>📚 All Courses</h2><button>Filter</button></div>
+    <div class="courses-grid">
+      <div class="course-card"><div class="course-thumb grad1"><div class="ct-glow c"></div>🤖</div><div class="course-body"><div class="course-cat">AI · Beginner</div><div class="course-title">Machine Learning Fundamentals</div><div class="course-meta"><span>⭐ 4.8</span><span>Free</span></div></div></div>
+      <div class="course-card"><div class="course-thumb grad3"><div class="ct-glow pk"></div>🔐</div><div class="course-body"><div class="course-cat">Security · Advanced</div><div class="course-title">Zero-Knowledge Cryptography</div><div class="course-meta"><span>⭐ 4.9</span><span>1,200 XP</span></div></div></div>
+      <div class="course-card"><div class="course-thumb grad2"><div class="ct-glow g"></div>🌿</div><div class="course-body"><div class="course-cat">Climate · All Levels</div><div class="course-title">Fusion Energy Engineering</div><div class="course-meta"><span>⭐ 5.0</span><span>Free</span></div></div></div>
+      <div class="course-card"><div class="course-thumb grad5"><div class="ct-glow go"></div>🎮</div><div class="course-body"><div class="course-cat">Game Dev · Intermediate</div><div class="course-title">Unreal Engine 6 MetaWorlds</div><div class="course-meta"><span>⭐ 4.7</span><span>800 XP</span></div></div></div>
+      <div class="course-card"><div class="course-thumb grad4"><div class="ct-glow g"></div>🧬</div><div class="course-body"><div class="course-cat">Bio · Advanced</div><div class="course-title">Protein Folding with AlphaFold</div><div class="course-meta"><span>⭐ 4.9</span><span>1,500 XP</span></div></div></div>
+      <div class="course-card"><div class="course-thumb grad1"><div class="ct-glow c"></div>⛓️</div><div class="course-body"><div class="course-cat">Web3 · Beginner</div><div class="course-title">Smart Contract Development</div><div class="course-meta"><span>⭐ 4.6</span><span>Free</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNITY & GAMIFICATION -->
+<div id="page-community" class="page hidden">
+  <div class="community">
+    <div class="dash-header">
+      <div>
+        <div class="dash-welcome">Community <span>Hub</span></div>
+        <div class="dash-date">Connect, compete, collaborate — level up together</div>
+      </div>
+    </div>
+
+    <div class="sec-hdr"><h2>🏅 Achievement Badges</h2><button>All 120 badges</button></div>
+    <div class="achieve-grid">
+      <div class="achieve-card"><div class="achieve-icon">🔥</div><div class="achieve-name">30 Day Streak</div></div>
+      <div class="achieve-card"><div class="achieve-icon">🚀</div><div class="achieve-name">First Launch</div></div>
+      <div class="achieve-card"><div class="achieve-icon">🧠</div><div class="achieve-name">AI Master</div></div>
+      <div class="achieve-card"><div class="achieve-icon">⚡</div><div class="achieve-name">Speed Learner</div></div>
+      <div class="achieve-card"><div class="achieve-icon">🌟</div><div class="achieve-name">Top Contributor</div></div>
+      <div class="achieve-card"><div class="achieve-icon">🤝</div><div class="achieve-name">Collaborator</div></div>
+      <div class="achieve-card locked"><div class="achieve-icon">👑</div><div class="achieve-name">Campus Legend</div></div>
+      <div class="achieve-card locked"><div class="achieve-icon">🌌</div><div class="achieve-name">Cosmos Scholar</div></div>
+      <div class="achieve-card locked"><div class="achieve-icon">⚗️</div><div class="achieve-name">Lab Rat</div></div>
+      <div class="achieve-card locked"><div class="achieve-icon">🎭</div><div class="achieve-name">Presenter</div></div>
+    </div>
+
+    <div class="community-grid">
+      <div>
+        <div class="sec-hdr"><h2>💬 Discussion Threads</h2><button>+ New Post</button></div>
+        <div class="discussion-item">
+          <div class="di-header">
+            <div class="di-avatar" style="background:rgba(0,245,255,0.15)">👩‍🚀</div>
+            <div class="di-meta">Nova Starlight · 2h ago · 42 replies</div>
+          </div>
+          <div class="di-title">Can someone explain how attention mechanisms work in transformers? Stuck on the multi-head part</div>
+          <div class="di-tags"><span class="di-tag">ai</span><span class="di-tag">transformers</span><span class="di-tag">nlp</span></div>
+        </div>
+        <div class="discussion-item">
+          <div class="di-header">
+            <div class="di-avatar" style="background:rgba(168,85,247,0.15)">🧑‍💻</div>
+            <div class="di-meta">Alex Nova · 5h ago · 28 replies</div>
+          </div>
+          <div class="di-title">Share your quantum circuit projects! Starting a community showcase thread 🌐</div>
+          <div class="di-tags"><span class="di-tag">quantum</span><span class="di-tag">showcase</span></div>
+        </div>
+        <div class="discussion-item">
+          <div class="di-header">
+            <div class="di-avatar" style="background:rgba(255,0,128,0.15)">👩‍🔬</div>
+            <div class="di-meta">Zara Knight · Yesterday · 89 replies</div>
+          </div>
+          <div class="di-title">Resources for absolute beginners in CRISPR — megathread with curated links</div>
+          <div class="di-tags"><span class="di-tag">biotech</span><span class="di-tag">beginner</span><span class="di-tag">resources</span></div>
+        </div>
+        <div class="discussion-item">
+          <div class="di-header">
+            <div class="di-avatar" style="background:rgba(255,215,0,0.15)">🧑‍🎤</div>
+            <div class="di-meta">Juno Wave · 2 days ago · 156 replies</div>
+          </div>
+          <div class="di-title">Weekly Hack Night results: 40 projects submitted, winner announced! 🏆</div>
+          <div class="di-tags"><span class="di-tag">hackathon</span><span class="di-tag">community</span><span class="di-tag">announcement</span></div>
+        </div>
+
+        <div class="sec-hdr" style="margin-top:2rem"><h2>🎯 Events & Hackathons</h2><button>View all</button></div>
+        <div class="event-card">
+          <div class="event-icon">⚛️</div>
+          <div class="event-title">Quantum Hackathon 2025 — Global Edition</div>
+          <div class="event-meta">May 15–17 · 1,200 registered · $50K prize pool 🏆</div>
+        </div>
+        <div class="event-card pink">
+          <div class="event-icon">🤖</div>
+          <div class="event-title">NovAI Challenge: Build an AI tutor in 48h</div>
+          <div class="event-meta">May 22 · 890 registered · Remote-friendly</div>
+        </div>
+        <div class="event-card gold">
+          <div class="event-icon">🌿</div>
+          <div class="event-title">Climate Tech Summit — Student Speaker Applications</div>
+          <div class="event-meta">June 1 · Apply by May 20 · NovaTech Campus</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="streak-card">
+          <div style="font-size:1.5rem">🔥</div>
+          <div class="streak-num">47</div>
+          <div class="streak-label">Day Learning Streak</div>
+          <div class="streak-flames">🔥🔥🔥🔥🔥</div>
+          <div style="font-size:0.72rem;color:var(--nc-muted);margin-top:0.75rem">Personal best! Keep going 3 more days for the Unstoppable badge</div>
+        </div>
+
+        <div style="background:var(--nc-surface);border:1px solid var(--nc-border);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem">
+          <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--nc-muted);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:1px">XP This Week</div>
+          <div style="font-family:'Orbitron',monospace;font-size:2.2rem;font-weight:900;color:var(--nc-cyan)">+840 XP</div>
+          <div style="display:flex;gap:4px;margin-top:0.75rem">
+            <div style="flex:1;height:30px;background:rgba(0,245,255,0.2);border-radius:3px"></div>
+            <div style="flex:1;height:40px;background:rgba(0,245,255,0.35);border-radius:3px"></div>
+            <div style="flex:1;height:25px;background:rgba(0,245,255,0.2);border-radius:3px"></div>
+            <div style="flex:1;height:55px;background:rgba(0,245,255,0.6);border-radius:3px"></div>
+            <div style="flex:1;height:45px;background:rgba(168,85,247,0.6);border-radius:3px"></div>
+            <div style="flex:1;height:30px;background:rgba(0,245,255,0.3);border-radius:3px"></div>
+            <div style="flex:1;height:20px;background:rgba(0,245,255,0.15);border-radius:3px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.62rem;color:var(--nc-muted);margin-top:4px;font-family:'Space Mono',monospace">
+            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+          </div>
+        </div>
+
+        <div class="sec-hdr"><h2>👥 Study Groups</h2><button>Browse</button></div>
+        <div class="study-groups">
+          <div class="sg-card">
+            <div class="sg-icon">⚛️</div>
+            <div class="sg-info">
+              <div class="sg-name">Quantum Coders</div>
+              <div class="sg-meta">47 members · Meets Tue & Thu · 6PM UTC</div>
+            </div>
+            <button class="sg-join">Joined ✓</button>
+          </div>
+          <div class="sg-card">
+            <div class="sg-icon">🤖</div>
+            <div class="sg-info">
+              <div class="sg-name">ML Reading Club</div>
+              <div class="sg-meta">124 members · Weekly papers · Discord</div>
+            </div>
+            <button class="sg-join">Join</button>
+          </div>
+          <div class="sg-card">
+            <div class="sg-icon">🧬</div>
+            <div class="sg-info">
+              <div class="sg-name">BioTech Builders</div>
+              <div class="sg-meta">89 members · Project-based · Open</div>
+            </div>
+            <button class="sg-join">Join</button>
+          </div>
+          <div class="sg-card">
+            <div class="sg-icon">🌿</div>
+            <div class="sg-info">
+              <div class="sg-name">Climate Hackers</div>
+              <div class="sg-meta">203 members · Monthly hackathon</div>
+            </div>
+            <button class="sg-join">Join</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="nos.js"></script>
+</body>
+</html>
