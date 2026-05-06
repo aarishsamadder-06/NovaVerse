@@ -5,7 +5,7 @@ NovaCampus is a polished, futuristic landing page and demo interface for a metav
 ## Live Demo
 This project is deployed on GitHub Pages.
 
-> Visit the live site at: `https://<your-github-username>.github.io/<repository-name>/`
+> Visit the live site at: `https://aarishsamadder-06.github.io/NovaVerse/`
 
 ## Features
 
